@@ -1,25 +1,36 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import get from './views/wash/get.vue';
+import add from './views/wash/add.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
+  linkActiveClass: 'active',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/wash/get',
+      name: 'get',
+      component: get,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
-})
+      path: '/wash/add',
+      name: 'add',
+      component: add,
+    },
+    {
+      path: '/wash/update',
+      name: 'renew',
+      component: get,
+    },
+
+    {
+      path: '**',
+      redirect: {
+        path: '/wash/get',
+      },
+    },
+  ],
+});
